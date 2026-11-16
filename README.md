@@ -56,6 +56,9 @@ sendo（と sendo-reader）を、それぞれの README の手順で、fork と 
 6. 確かめる：Worker の「ログ」（Observability）に、遅れている fork があるときだけ、fork ごとの結果
    （`merged upstream`、`waiting for …`）が出る。上流が進んでいれば、数分のうちに fork に
    「Merge branch 'sendo-feed:main' into main」のコミットが入る
+   - 初めてのデプロイのあと、毎分の起動が始まるまで、15 分ほどかかることがある（Cloudflare が cron を
+     行き渡らせるのを待つ）。それまでは、ログに何も出なくても正常。動き出すと、Worker の「設定」→
+     「トリガー イベント」に、毎分の起動が並ぶ
 
 トークンの期限が来たら、同じ設定で作り直し、画面の `GITHUB_TOKEN` を入れ替えます（デプロイし直す必要はありません）。
 
