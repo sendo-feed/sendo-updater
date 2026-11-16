@@ -46,6 +46,8 @@ sendo（と sendo-reader）を、それぞれの README の手順で、fork と 
    | Worker の名前 | `sendo-updater`（変えない。`wrangler.jsonc` の `name` と違うとビルドが失敗する） |
    | ビルドのコマンド | 空のまま |
    | デプロイのコマンド | `pnpm run deploy` |
+   | プレビューのコマンド | `npx wrangler versions upload`（Workers Builds の既定。空のままでは先に進めない） |
+   | プレビュービルドを有効化 | オフのまま（`main` 以外のブランチを使わないので） |
 
 4. 1 回目のビルドは、秘密がなくて止まる。Worker の「設定」→「変数とシークレット」に、次の 2 つを入れる
    - `GITHUB_TOKEN`：型を「**シークレット**」にして、2 のトークン
