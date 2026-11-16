@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // 変えない。Workers Builds でつなぐとき、画面の Worker の名前と同じにする
+  "name": "sendo-updater",
+  "main": "src/index.ts",
+  // 日付を上げるときは、Workers の互換性の変更点を確かめてから上げる
+  "compatibility_date": "2026-10-29",
+  "observability": {
+    "enabled": true
+  },
+  // 外から呼ばれる入口は持たない。毎分の起動だけで動く
+  "workers_dev": false,
+  "preview_urls": false,
+
+  // 毎分、各自の fork と上流の差分を調べる（src/index.ts）
+  "triggers": {
+    "crons": ["* * * * *"]
+  },
+
+  // fork の持ち主（GITHUB_OWNER）は、ここ（vars）に書かず、Cloudflare の画面の「変数」に入れる。
+  // keep_vars で、画面の変数をデプロイで消さない（sendo の docs/decisions/deploy.md の 4）
+  "keep_vars": true,
+
+  // 秘密は、Cloudflare の画面の「変数とシークレット」に、型を「シークレット」にして入れる（README）。
+  // ないとデプロイが止まる
+  "secrets": {
+    "required": ["GITHUB_TOKEN"]
+  }
+}

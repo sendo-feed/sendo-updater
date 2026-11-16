@@ -1,0 +1,28 @@
+{
+  "name": "sendo-updater",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Keeps your forks of Sendo up to date with sendo-feed. A Cloudflare Worker that merges upstream every minute.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "packageManager": "pnpm@11.28.10",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "postinstall": "wrangler types",
+    "cf-typegen": "wrangler types",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p test",
+    "lint": "biome check .",
+    "format": "biome check --write .",
+    "test": "vitest run",
+    "check": "pnpm typecheck && pnpm lint && pnpm test",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.4",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5",
+    "wrangler": "4.156.0"
+  }
+}
