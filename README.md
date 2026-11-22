@@ -1,5 +1,11 @@
 # sendo-updater
 
+> [!IMPORTANT]
+> **このリポジトリは使われなくなりました（アーカイブ済み）。** Sendo の Cloudflare 版は
+> [sendo-feed/sendo#130](https://github.com/sendo-feed/sendo/pull/130) で廃止され、コンテナ版だけになりました。
+> コンテナ版の更新の仕方は、[sendo の README](https://github.com/sendo-feed/sendo#readme) を見てください。
+> 以下は、Cloudflare 版のころの説明です。
+
 自分の Cloudflare にデプロイした Sendo の fork（sendo、sendo-reader）を、上流（`sendo-feed`）の更新に
 自動で追従させる Cloudflare Worker。毎分、各自の fork と上流の差分を調べ、遅れていれば取り込む。
 取り込んだ push で、各 fork の Workers Builds がデプロイする。上流の変更は、数分でデプロイまで届く。
